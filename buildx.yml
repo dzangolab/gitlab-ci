@@ -1,9 +1,9 @@
-.buildx-setup:
+.buildx_setup:
   script:
     - docker run --privileged --rm tonistiigi/binfmt --install all
     - docker buildx create --use --driver docker-container --name multiplatform
     - docker buildx inspect multiplatform --bootstrap
 
-.buildx-teardown:
+.buildx_teardown:
   script:
     - docker buildx rm multiplatform
