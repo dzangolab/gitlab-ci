@@ -4,4 +4,4 @@
     - docker buildx create --use --driver docker-container --name multiplatform
     - docker buildx inspect multiplatform --bootstrap
   teardown:
-  - docker buildx rm multiplatform
+    - docker buildx rm multiplatform
