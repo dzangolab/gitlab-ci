@@ -13,6 +13,6 @@
         --platform $DOCKER_PLATFORMS
         --provenance=false
         --push
-        -t $API_IMAGE_STAGING
+        -t $[[ image ]]
         -f $PATH_TO_DOCKER/Dockerfile .
-    - docker manifest inspect $API_IMAGE_STAGING
+    - docker manifest inspect $[[ image ]]
