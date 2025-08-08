@@ -1,8 +1,11 @@
 spec:
   inputs:
-    build-args: 
+    build-args:
+      type: string 
     dockerfile:
+      type: string 
     image:
+      type: string 
 ---
 
 .buildx:
