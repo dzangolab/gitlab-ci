@@ -5,3 +5,14 @@
     - docker run --privileged --rm tonistiigi/binfmt --install all
     - docker buildx create --use --driver docker-container --name multiplatform
     - docker buildx inspect multiplatform --bootstrap
+  script:
+    - DOCKER_BUILDKIT=1 docker buildx build
+        --build-arg build=$CI_PIPELINE_ID
+        --build-arg version=$VERSION.$TAG
+        --target production
+        --platform $DOCKER_PLATFORMS
+        --provenance=false
+        --push
+        -t $API_IMAGE_STAGING
+        -f $PATH_TO_DOCKER/Dockerfile .
+      - docker manifest inspect $API_IMAGE_STAGING
