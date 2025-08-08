@@ -15,4 +15,4 @@
         --push
         -t $API_IMAGE_STAGING
         -f $PATH_TO_DOCKER/Dockerfile .
-      - docker manifest inspect $API_IMAGE_STAGING
+    - docker manifest inspect $API_IMAGE_STAGING
