@@ -1,0 +1,18 @@
+.buildx:
+  teardown:
+    - docker buildx rm multiplatform
+  setup:
+    - docker run --privileged --rm tonistiigi/binfmt --install all
+    - docker buildx create --use --driver docker-container --name multiplatform
+    - docker buildx inspect multiplatform --bootstrap
+  build:
+    - DOCKER_BUILDKIT=1 docker buildx build
+        --build-arg build=$CI_PIPELINE_ID
+        --build-arg version=$VERSION.$TAG
+        --target production
+        --platform $DOCKER_PLATFORMS
+        --provenance=false
+        --push
+        -t $[[ image ]]
+        -f $PATH_TO_DOCKER/Dockerfile .
+    - docker manifest inspect $[[ image ]]
