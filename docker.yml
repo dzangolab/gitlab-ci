@@ -22,6 +22,6 @@ spec:
         --platform $DOCKER_PLATFORMS
         --provenance=false
         --push
-        -t $[[ image ]]
+        -t $[[ inputs.image ]]
         -f $[[ inputs.dockerfile ]] .
     - docker manifest inspect $[[ inputs.image ]]
