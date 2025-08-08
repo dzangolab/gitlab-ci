@@ -1,3 +1,10 @@
+spec:
+  inputs:
+    build-args: 
+    dockerfile:
+    image:
+---
+
 .buildx:
   teardown:
     - docker buildx rm multiplatform
