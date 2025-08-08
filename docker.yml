@@ -7,11 +7,11 @@
     - docker buildx inspect multiplatform --bootstrap
   build:
     - DOCKER_BUILDKIT=1 docker buildx build
-        $[[ build-args]]
+        $[[ inputs.build-args]]
         --target production
         --platform $DOCKER_PLATFORMS
         --provenance=false
         --push
         -t $[[ image ]]
-        -f $[[ dockerfile ]] .
-    - docker manifest inspect $[[ image ]]
+        -f $[[ inputs.dockerfile ]] .
+    - docker manifest inspect $[[ inputs.image ]]
