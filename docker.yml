@@ -1,10 +1,13 @@
 spec:
   inputs:
     build-args:
+      default: ''
       type: string 
     dockerfile:
+      default: 'Dckerfile'
       type: string 
     image:
+      default: ''
       type: string 
 ---
 
